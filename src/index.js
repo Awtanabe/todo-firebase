@@ -2,12 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import Todos from './components/Todos'
+import Router from './router'
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Todos />
+    <Router />
   </React.StrictMode>,
   document.getElementById('root')
 );
