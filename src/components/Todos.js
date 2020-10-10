@@ -1,23 +1,58 @@
 import React from 'react';
 import styled  from 'styled-components'
+import Todo from './Todo'
 
-const Container = styled.div`
+const TodoWrapper = styled.div`
   width: 300px;
   margin: 0 auto;
+`
+
+const TodoListsFormField = styled.div`
+`
+
+const TodoListsFormFieldTitle = styled.h1`
+`
+const TodoListsFormFieldInput = styled.input`
+`
+const TodoListsFormFieldButton = styled.button`
+`
+
+const TodoListsWrapper = styled.div`
+`
+const TodoLists = styled.ul`
+`
+const TodoListItem = styled.li`
 `
 
 class Todos extends React.Component {
   constructor(props){
     super(props)
+    this.state = {
+      todos: [{id:1, title:"todo1", body: "散歩する"}]
+    }
   }
 
   render(){
+    const { todos } = this.state
     return(
-      <Container>
-        <h1>Todos</h1>
-        <input type="text"/>
-        <button>追加</button>
-      </Container>
+      <TodoWrapper>
+        <TodoListsFormField>
+          <TodoListsFormFieldTitle>
+            Todos
+          </TodoListsFormFieldTitle>
+        </TodoListsFormField>
+        <TodoListsFormFieldInput 
+          type="text"
+        />
+        <TodoListsFormFieldButton>
+          追加
+        </TodoListsFormFieldButton>
+        <TodoListsWrapper>
+          <TodoLists>
+            {todos.map((todo) => <Todo {...todo}/>)}
+          </TodoLists>
+        </TodoListsWrapper>
+      </TodoWrapper>
     )
   }
 }
