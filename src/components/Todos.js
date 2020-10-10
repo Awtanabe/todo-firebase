@@ -1,6 +1,7 @@
 import React from 'react';
 import styled  from 'styled-components'
 import Todo from './Todo'
+import firebase, { db } from '../Firebase'
 
 const TodoWrapper = styled.div`
   width: 300px;
@@ -32,6 +33,18 @@ class Todos extends React.Component {
     }
   }
 
+  handleSubmit() {
+
+    debugger
+    const item = {
+      name: "name",
+      price: 100
+  };
+  
+    db.collection('items').add(item);
+
+  }
+
   render(){
     const { todos } = this.state
     return(
@@ -44,7 +57,7 @@ class Todos extends React.Component {
         <TodoListsFormFieldInput 
           type="text"
         />
-        <TodoListsFormFieldButton>
+        <TodoListsFormFieldButton onClick={() => this.handleSubmit()}>
           追加
         </TodoListsFormFieldButton>
         <TodoListsWrapper>
